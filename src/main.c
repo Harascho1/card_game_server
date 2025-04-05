@@ -60,9 +60,8 @@ int create_socket(int socket_fd) {
             return 0;
         }
 
-        game.room.players[i].connection_state = PLAYER_STATE_CONNECTED;
-        game.room.players[i].fd = new_socket;
-        game.room.num_of_players++;
+        game.room.players[i] = *player_init(new_socket, &address);
+
     }
     game.state = GAME_STATE_WAITING_FOR_PLAYERS;
 
